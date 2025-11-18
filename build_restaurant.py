@@ -89,9 +89,10 @@ def save_to_csv(rows, filename="restaurants_osm.csv"):
         for r in rows:
             writer.writerow(r)
 
-def build_restaurant_list():
-    address = input("請輸入地址 (或輸入 lat,lng): ").strip()
-    radius = input("請輸入距離（公尺）: ").strip()
+def build_restaurant_list(lat = 24.1480614, lng = 120.6369732, radius = 500):
+    address = str(lat) + "," + str(lng)
+    # address = input("請輸入地址 (或輸入 lat,lng): ").strip()
+    # radius = input("請輸入距離（公尺）: ").strip()
     try:
         radius_m = int(radius)
     except:
@@ -117,6 +118,7 @@ def build_restaurant_list():
     except Exception as e:
         print("發生錯誤：", e)
         return
+    
     if not parsed:
         print("查無餐廳")
     else:
@@ -124,4 +126,6 @@ def build_restaurant_list():
         print(f"已寫入 {len(parsed)} 筆到 restaurants_osm.csv")
 
 if __name__ == "__main__":
+    # address = input("請輸入地址: ").strip()
+    # radius = input("請輸入距離（公尺）: ").strip()
     build_restaurant_list()

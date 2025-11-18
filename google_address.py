@@ -3,8 +3,6 @@ import requests
 import json
 from dotenv import load_dotenv
 
-# 若要看內容（測試用，正式勿列印金鑰）
-# print("GOOGLE_API_KEY:", os.getenv("GOOGLE_API_KEY"))
 load_dotenv()
 API_KEY = os.getenv("GOOGLE_API_KEY")
 GEOCODE_URL = "https://maps.googleapis.com/maps/api/geocode/json"
@@ -27,7 +25,7 @@ def address_to_latlng(address: str, region: str = "tw"):
     data = resp.json()
 
     # 印出完整回傳以供除錯
-    print("GEOCODE RESPONSE:", json.dumps(data, ensure_ascii=False, indent=2))
+    # print("GEOCODE RESPONSE:", json.dumps(data, ensure_ascii=False, indent=2))
 
     status = data.get("status")
     if status != "OK":
