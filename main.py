@@ -22,7 +22,8 @@ chain = prompt | model
 address = input("請輸入地址: ").strip()
 radius = input("請輸入距離（公尺）: ").strip()
 
-# address = "台中市南屯區黎明東街260號"
+# 從輸入的地址轉換成經緯度
+# address = "臺北市中正區北平西路3號" #台北車站
 # radius = 1000
 res = google_address.address_to_latlng(address)
 if res["ok"]:
@@ -34,11 +35,14 @@ if res["ok"]:
 else:
     print("找不到經緯度或發生錯誤:", res["error"])
 
+#將經緯度輸入到nominatim 抓取範圍內的餐廳資訊
 if lat and lng and radius:
     build_restaurant.build_restaurant_list(lat, lng, radius)
 else:
     print("無法建立餐廳清單，缺少經緯度或距離參數")
 
+# 問答介面
+# 將餐廳資訊輸入當作參考資料 詢問餐廳資訊
 while True:
     print('\n\n-----------------------------------------')
     question = input('Ask your question (q to quit):  ')

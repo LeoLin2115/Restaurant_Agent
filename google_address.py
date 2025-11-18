@@ -39,7 +39,7 @@ def address_to_latlng(address: str, region: str = "tw"):
     return {"ok": True, "lat": lat, "lng": lng, "formatted_address": first.get("formatted_address")}
 
 if __name__ == "__main__":
-    addr = "台中市南屯區黎明東街260號"
+    addr = "臺北市中正區北平西路3號"
     res = address_to_latlng(addr)
     if res["ok"]:
         print(f"地址: {addr}")
